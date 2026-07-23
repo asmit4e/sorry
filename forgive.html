@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Forgive Me?</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body id="page-forgive">
 
     <canvas id="night-sky"></canvas>
-    <audio id="bg-music" loop><source src="../music.mp3" type="audio/mpeg"></audio>
+    <audio id="bg-music" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
     <div class="page-container">
         <div class="glass-card fade-in-element">
@@ -22,9 +22,9 @@
                 <button id="btn-wait" class="btn-primary btn-outline">I Need More Time 🤍</button>
             </div>
             
-            <!-- Allow user to navigate back safely -->
             <div style="margin-top: 40px;">
-                <a href="../index.html" class="btn-transition" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">&larr; Start Over</a>
+                <!-- Link updated directly to index.html -->
+                <a href="index.html" class="btn-transition" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem;">&larr; Start Over</a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
     </div>
 
-    <script src="../assets/particles.js"></script>
-    <script src="../script.js"></script>
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
