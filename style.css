@@ -1,0 +1,308 @@
+/* =========================================
+   GLOBAL STYLES & THEMING
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('./assets/animations.css');
+
+:root {
+    --pink: #ffb6c1;
+    --lavender: #e6e6fa;
+    --rosegold: #b76e79;
+    --white: #ffffff;
+    --dark-bg: #0b0c10;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Custom cursor used */
+}
+
+body {
+    background: linear-gradient(135deg, #0b0c10 0%, #1a1a2e 50%, #160d1c 100%);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    opacity: 0; /* Handled by JS for smooth page transitions */
+    transition: opacity 0.6s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* Background Canvas */
+#night-sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Glassmorphism Utility */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.custom-cursor.hovering {
+    background-color: rgba(255, 182, 193, 0.3);
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Layout Containers */
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rosegold) 0%, var(--pink) 100%);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.6);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--lavender);
+    color: var(--white);
+}
+
+/* Audio Player UI */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-player button {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.music-player input[type=range] {
+    width: 60px;
+    accent-color: var(--pink);
+}
+
+/* Specific Pages Styling */
+
+/* Index / Landing */
+.hero-heart {
+    font-size: 5rem;
+    animation: pulseHeart 2s infinite;
+    margin-bottom: 1rem;
+}
+
+/* Letter */
+.typewriter-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+    min-height: 250px;
+    border-right: 2px solid var(--pink);
+    animation: typewriterBlink 0.75s step-end infinite;
+    white-space: pre-wrap;
+}
+
+/* Memories Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(1.05);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.slide p {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Reasons */
+.reason-container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reason-text {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--pink);
+    opacity: 0;
+    position: absolute;
+    transition: opacity 1s ease;
+}
+
+.reason-text.active {
+    opacity: 1;
+    animation: glowText 2s infinite;
+}
+
+/* Promises */
+.promise-list {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.promise-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+}
+
+.promise-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.check-icon {
+    color: var(--pink);
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Floating Elements Generator */
+.floating-heart {
+    position: fixed;
+    color: var(--pink);
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp 4s ease-in forwards;
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 999;
+    animation: confettiFall linear forwards;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .glass-card { padding: 1.5rem; width: 95%; }
+    h1 { font-size: 1.8rem; }
+    .hero-heart { font-size: 4rem; }
+    .music-player { bottom: 10px; right: 10px; padding: 8px 12px; }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reasons Why</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body id="page-reasons">
+
+    <canvas id="night-sky"></canvas>
+    <audio id="bg-music" loop><source src="../music.mp3" type="audio/mpeg"></audio>
+
+    <div class="page-container">
+        <div class="glass-card fade-in-element">
+            <h2 style="margin-bottom: 30px;">I Can't Bear To Lose...</h2>
+            
+            <div class="reason-container">
+                <div class="reason-text active">Your beautiful smile</div>
+                <div class="reason-text">Your infinite kindness</div>
+                <div class="reason-text">Your contagious laugh</div>
+                <div class="reason-text">The way your eyes light up</div>
+                <div class="reason-text">Your loving heart</div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <a href="promise.html" class="btn-primary btn-transition">My Promise To You</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <button id="play-btn">▶</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <script src="../assets/particles.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
