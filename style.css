@@ -3,7 +3,7 @@
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
-@import url('./assets/animations.css');
+@import url('animations.css');
 
 :root {
     --pink: #ffb6c1;
@@ -24,17 +24,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Custom cursor used */
+    cursor: none; 
 }
 
 body {
-    background: linear-gradient(135deg, #0b0c10 0%, #1a1a2e 50%, #160d1c 100%);
+    background: url('background.jpg') center/cover no-repeat fixed, linear-gradient(135deg, #0b0c10 0%, #1a1a2e 50%, #160d1c 100%);
+    background-color: #0b0c10;
     color: var(--text-primary);
     font-family: var(--font-body);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    opacity: 0; /* Handled by JS for smooth page transitions */
+    opacity: 0;
     transition: opacity 0.6s ease;
 }
 
@@ -47,7 +48,6 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
-/* Background Canvas */
 #night-sky {
     position: fixed;
     top: 0;
@@ -58,7 +58,6 @@ h1, h2, h3 {
     pointer-events: none;
 }
 
-/* Glassmorphism Utility */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -73,7 +72,6 @@ h1, h2, h3 {
     text-align: center;
 }
 
-/* Custom Cursor */
 .custom-cursor {
     position: fixed;
     top: 0;
@@ -93,7 +91,6 @@ h1, h2, h3 {
     transform: translate(-50%, -50%) scale(1.5);
 }
 
-/* Layout Containers */
 .page-container {
     min-height: 100vh;
     display: flex;
@@ -105,7 +102,6 @@ h1, h2, h3 {
     z-index: 1;
 }
 
-/* Buttons */
 .btn-primary {
     display: inline-block;
     background: linear-gradient(135deg, var(--rosegold) 0%, var(--pink) 100%);
@@ -134,7 +130,6 @@ h1, h2, h3 {
     color: var(--white);
 }
 
-/* Audio Player UI */
 .music-player {
     position: fixed;
     bottom: 20px;
@@ -162,16 +157,12 @@ h1, h2, h3 {
     accent-color: var(--pink);
 }
 
-/* Specific Pages Styling */
-
-/* Index / Landing */
 .hero-heart {
     font-size: 5rem;
     animation: pulseHeart 2s infinite;
     margin-bottom: 1rem;
 }
 
-/* Letter */
 .typewriter-text {
     font-family: var(--font-body);
     font-size: 1.1rem;
@@ -183,7 +174,6 @@ h1, h2, h3 {
     white-space: pre-wrap;
 }
 
-/* Memories Slider */
 .slider-container {
     position: relative;
     width: 100%;
@@ -232,7 +222,6 @@ h1, h2, h3 {
     justify-content: space-between;
 }
 
-/* Reasons */
 .reason-container {
     height: 100px;
     display: flex;
@@ -254,7 +243,6 @@ h1, h2, h3 {
     animation: glowText 2s infinite;
 }
 
-/* Promises */
 .promise-list {
     text-align: left;
     margin-bottom: 2rem;
@@ -280,7 +268,6 @@ h1, h2, h3 {
     font-size: 1.2rem;
 }
 
-/* Floating Elements Generator */
 .floating-heart {
     position: fixed;
     color: var(--pink);
@@ -299,7 +286,6 @@ h1, h2, h3 {
     animation: confettiFall linear forwards;
 }
 
-/* Responsive */
 @media (max-width: 480px) {
     .glass-card { padding: 1.5rem; width: 95%; }
     h1 { font-size: 1.8rem; }
