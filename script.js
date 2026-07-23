@@ -3,12 +3,10 @@
 // =========================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Smooth Page Load Transition
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
 
-    // 2. Custom Cursor Logic
     const cursor = document.createElement('div');
     cursor.classList.add('custom-cursor');
     document.body.appendChild(cursor);
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
 
-    // 3. Audio & Web Audio API (Sound Effects)
     const bgMusic = document.getElementById('bg-music');
     const playBtn = document.getElementById('play-btn');
     const volSlider = document.getElementById('volume-slider');
@@ -42,11 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
             gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
             osc.start();
             osc.stop(ctx.currentTime + 0.1);
-        } catch (e) {} // Silently fail if blocked
+        } catch (e) {} 
     }
 
     if (bgMusic) {
-        // Sync across pages using sessionStorage
         const savedTime = sessionStorage.getItem('musicTime');
         const isPlaying = sessionStorage.getItem('musicPlaying');
 
@@ -81,14 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 4. Page Transition Logic
     document.querySelectorAll('.btn-transition').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             playClickSound();
             const target = this.getAttribute('href');
             
-            // Special case for Landing page play button
             if(this.id === 'start-btn' && bgMusic) {
                 bgMusic.play().catch(e=>console.log(e));
                 sessionStorage.setItem('musicPlaying', 'true');
@@ -101,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 5. Floating Hearts Generator
     setInterval(() => {
         const heart = document.createElement('div');
         heart.classList.add('floating-heart');
@@ -113,12 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 6000);
     }, 800);
-
-    // =========================================
-    // PAGE SPECIFIC LOGIC
-    // =========================================
     
-    // Page: Letter
     const typewriterEl = document.getElementById('typewriter');
     if (typewriterEl) {
         const text = typewriterEl.getAttribute('data-text');
@@ -127,13 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (i < text.length) {
                 typewriterEl.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 40); // typing speed
+                setTimeout(typeWriter, 40); 
             }
         }
         setTimeout(typeWriter, 1000);
     }
 
-    // Page: Memories (Slider)
     const slides = document.querySelectorAll('.slide');
     if (slides.length > 0) {
         let currentSlide = 0;
@@ -151,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Page: Reasons
     const reasons = document.querySelectorAll('.reason-text');
     if (reasons.length > 0) {
         let rIndex = 0;
@@ -162,18 +148,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
     }
 
-    // Page: Promises
     const promiseItems = document.querySelectorAll('.promise-item');
     if (promiseItems.length > 0) {
         promiseItems.forEach((item, index) => {
             setTimeout(() => {
                 item.classList.add('show');
-                playClickSound(); // tiny pop for each checkmark
+                playClickSound(); 
             }, 800 * (index + 1));
         });
     }
 
-    // Page: Forgive (Final)
     const btnYes = document.getElementById('btn-yes');
     const btnWait = document.getElementById('btn-wait');
     const finalMsg = document.getElementById('final-message');
@@ -185,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
             finalMsg.innerHTML = "<h2>Thank you for giving us another chance.</h2><h1 class='hero-heart' style='margin-top:20px; animation: glowText 2s infinite'>I Love You ❤️</h1>";
             finalMsg.classList.add('fade-in-element');
             
-            // Confetti explosion
             for (let i = 0; i < 150; i++) {
                 let conf = document.createElement('div');
                 conf.classList.add('confetti');
